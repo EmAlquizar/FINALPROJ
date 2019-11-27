@@ -39,6 +39,7 @@
       </td>
       <td>
         <button class ="btn btn-primary">Edit</button>
+        <button class ="btn btn-primary" v-on:click="deleteItem(item)">Delete</button>
       </td>
     </tr>
     </tbody>
@@ -108,11 +109,11 @@
 							console.log(data);
 						});
 				},
-        deleteTask(item){
-          axios.post('/projects/'+this.project.id+'/tasks', this.new_task)
-            .then(({data})=>{
-              this.tasks.push(data);
-              this.new_task.title = '';
+        deleteItem(item){
+          axios.post('/inventory/'+item.id+'/delete')
+            .then(function(response){
+              var index = vm.items.indexOf(item);
+              vm.items.splice(index, 1);
               console.log(data);
             });
         }

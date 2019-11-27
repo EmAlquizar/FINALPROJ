@@ -23,7 +23,7 @@ class InventoryController extends Controller
     }
      public function delete(Item $item)
     {
-          $items->delete();
+          $item->delete();
           return "Item was deleted successfully";     
     }
     
